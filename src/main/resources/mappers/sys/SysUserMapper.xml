@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zone7.demo.helloworld.sys.dao.SysUserMapper">
+  <resultMap id="BaseResultMap" type="com.zone7.demo.helloworld.sys.pojo.SysUser">
+    <id column="id" property="id" />
+    <result column="name" property="name" />
+    <result column="password" property="password" />
+    <result column="phone" property="phone" />
+    <result column="score" property="score" />
+    <result column="star" property="star" />
+    <result column="department" property="department" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, password, phone, score, star, department
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from sys_users
+    where id = #{id}
+  </select>
+  <select id="findByName" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from SYS_USERS
+    <if test="name != null">
+    where name like #{name}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey">
+    delete from sys_users
+    where id = #{id}
+  </delete>
+  <insert id="insert">
+    insert into sys_users (id, name, password, phone, score, star, department)
+    values (#{id}, #{name}, #{password}, #{phone}, #{score}, #{star}, #{department})
+  </insert>
+  <insert id="insertSelective">
+    insert into sys_users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="star != null">
+        star,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id},
+      </if>
+      <if test="name != null">
+        #{name},
+      </if>
+      <if test="password != null">
+        #{password},
+      </if>
+      <if test="phone != null">
+        #{phone},
+      </if>
+      <if test="score != null">
+        #{score},
+      </if>
+      <if test="star != null">
+        #{star},
+      </if>
+      <if test="department != null">
+        #{department},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective">
+    update sys_users
+    <set>
+      <if test="name != null">
+        name = #{name},
+      </if>
+      <if test="password != null">
+        password = #{password},
+      </if>
+      <if test="phone != null">
+        phone = #{phone},
+      </if>
+      <if test="score != null">
+        score = #{score},
+      </if>
+      <if test="star != null">
+        star = #{star},
+      </if>
+      <if test="department != null">
+        department = #{department},
+      </if>
+    </set>
+    where id = #{id}
+  </update>
+  <update id="updateByPrimaryKey">
+    update sys_users
+    set name = #{name},
+      password = #{password},
+      phone = #{phone},
+      score = #{score},
+      star = #{star},
+      department = #{department}
+    where id = #{id}
+  </update>
+</mapper>
