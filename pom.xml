@@ -27,7 +27,7 @@
     <fastjson.version>1.2.21</fastjson.version>
     <swagger2.version>2.2.2</swagger2.version>
     <oracle.version>11.2.0.3</oracle.version>
-    <mysql.version>8.0.11</mysql.version>
+    <mysql.version>8.0.16</mysql.version>
     <druid-starte.version>1.1.1</druid-starte.version>
     <junit.version>4.12</junit.version>
     <log4j.version>1.2.15</log4j.version>
